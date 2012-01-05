@@ -25,4 +25,5 @@ contains tutorials for:
 * `numberguess` - CDI + JSF
 * `servlet-async` - CDI + Asynchronous Servlet + Asynchronous EJB 
 * `servlet-filterlistener` - Servlet Filter and Listener
+* `wsba-participant-completion-simple` - Simple WS-BA JAX-WS Web service with participant driven completion
 

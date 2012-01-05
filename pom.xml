@@ -41,6 +41,7 @@
       <module>numberguess</module>
       <module>servlet-async</module>
       <module>servlet-filterlistener</module>
+      <module>wsba-participant-completion-simple</module>
    </modules>
 
    <scm>
