@@ -18,17 +18,16 @@
  * (C) 2005-2006,
  * @author JBoss Inc.
  */
-package org.jboss.as.quickstarts.wsat.simple;
+package org.jboss.as.quickstarts.wsat.simple.servlet;
 
 import com.arjuna.mw.wst11.client.JaxWSHeaderContextProcessor;
-
+import org.jboss.as.quickstarts.wsat.simple.RestaurantException;
 import org.jboss.as.quickstarts.wsat.simple.jaxws.RestaurantServiceAT;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
 import javax.xml.ws.handler.Handler;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -39,7 +38,6 @@ import java.util.List;
  * 
  * @author paul.robinson@redhat.com, 2012-01-04
  */
-@ClientStub
 public class Client implements RestaurantServiceAT {
     private RestaurantServiceAT restaurant;
 
@@ -47,10 +45,10 @@ public class Client implements RestaurantServiceAT {
      * Default constructor with hard-coded values for the RestaurantServiceAT endpoint details (wsdl url, service name & port
      * name)
      * 
-     * @throws MalformedURLException if the WSDL url is malformed.
+     * @throws java.net.MalformedURLException if the WSDL url is malformed.
      */
     public Client() throws MalformedURLException {
-        URL wsdlLocation = new URL("http://localhost:8080/wsat-simple/RestaurantServiceAT?wsdl");
+        URL wsdlLocation = new URL("http://wsatsimple-quickstart.rhcloud.com:8080/RestaurantServiceAT?wsdl");
         QName serviceName = new QName("http://www.jboss.com/jbossas/quickstarts/wsat/simple/Restaurant",
                 "RestaurantServiceATService");
         QName portName = new QName("http://www.jboss.com/jbossas/quickstarts/wsat/simple/Restaurant", "RestaurantServiceAT");
