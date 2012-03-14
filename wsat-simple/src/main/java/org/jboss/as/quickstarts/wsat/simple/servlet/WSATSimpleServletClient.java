@@ -45,15 +45,6 @@ public class WSATSimpleServletClient extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
-/*        URL wsdlLocation = new URL("http://localhost:8080/wsat-simple/RestaurantServiceAT?wsdl");
-        QName serviceName = new QName("http://www.jboss.com/jbossas/quickstarts/wsat/simple/Restaurant",
-                "RestaurantServiceATService");
-        
-
-        Service service = Service.create(wsdlLocation, serviceName);*/
-        //QName portName = new QName("http://www.jboss.com/jbossas/quickstarts/wsat/simple/Restaurant", "RestaurantServiceAT");
-        //RestaurantServiceAT client = service.getPort(portName, RestaurantServiceAT.class);
         
         /*
          * Add client handler chain
