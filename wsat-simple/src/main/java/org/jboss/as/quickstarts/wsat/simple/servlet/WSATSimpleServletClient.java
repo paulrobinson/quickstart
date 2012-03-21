@@ -25,13 +25,13 @@ import java.util.List;
 
 /**
  * <p>
- * A simple servlet 3 as client that sends several messages to a queue.
+ * A simple servlet 3 that begins a WS-AtomicTransaction and invokes a Web service. If the call is successful, the transaction is committed.
  * </p>
  * <p/>
  * <p/>
- * The servlet is registered and mapped to /HelloWorldMDBServletClient using the {@linkplain javax.servlet.annotation.WebServlet
+ * The servlet is registered and mapped to /WSATSimpleServletClient using the {@linkplain javax.servlet.annotation.WebServlet
  *
- * @author Serge Pagop (spagop@redhat.com)
+ * @author Paul Robinson (paul.robinson@redhat.com)
  * @HttpServlet}. </p>
  */
 @WebServlet("/WSATSimpleServletClient")
@@ -53,9 +53,10 @@ public class WSATSimpleServletClient extends HttpServlet {
         List<Handler> handlers = new ArrayList<Handler>(1);
         handlers.add(new JaxWSHeaderContextProcessor());
         bindingProvider.getBinding().setHandlerChain(handlers);
-        String openshift = System.getenv("OPENSHIFT_INTERNAL_IP");
+        //Lookup the DNS name of the server from the environment and set the endpoint address on the client.
+        String openshift = System.getenv("OPENSHIFT_APP_DNS");
         if (openshift != null) {
-            bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://"+openshift+":8080/wsat-simple/RestaurantServiceAT");
+            bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://"+openshift+"/wsat-simple/RestaurantServiceAT");
         }
 
         resp.setContentType("text/html");
