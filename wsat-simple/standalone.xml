@@ -273,7 +273,7 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:weld:1.0"/>
         <subsystem xmlns="urn:jboss:domain:xts:1.0">
-            <xts-environment url="http://localhost:8080/ws-c11/ActivationService"/>
+            <xts-environment url="http://${OPENSHIFT_INTERNAL_IP}:8080/ws-c11/ActivationService"/>
         </subsystem>
     </profile>
 

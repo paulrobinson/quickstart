@@ -53,6 +53,10 @@ public class WSATSimpleServletClient extends HttpServlet {
         List<Handler> handlers = new ArrayList<Handler>(1);
         handlers.add(new JaxWSHeaderContextProcessor());
         bindingProvider.getBinding().setHandlerChain(handlers);
+        String openshift = System.getenv("OPENSHIFT_INTERNAL_IP");
+        if (openshift != null) {
+            bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://"+openshift+":8080/wsat-simple/RestaurantServiceAT");
+        }
 
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
