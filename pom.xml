@@ -149,6 +149,7 @@
             </activation>
             <modules>
                 <module>wsat-simple</module>
+                <module>wsat-recovery</module>
                 <module>wsba-coordinator-completion-simple</module>
                 <module>wsba-participant-completion-simple</module>
             </modules>
