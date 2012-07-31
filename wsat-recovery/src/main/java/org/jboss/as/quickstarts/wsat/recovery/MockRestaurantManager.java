@@ -42,6 +42,9 @@ public class MockRestaurantManager implements Serializable {
     // A thread safe booking counter
     private AtomicInteger bookings = new AtomicInteger(0);
 
+    // A flag for detecting the first call to endScan()
+    private static boolean firstScan = true;
+
     /**
      * Accessor to obtain the singleton restaurant manager instance.
      * 
@@ -109,5 +112,12 @@ public class MockRestaurantManager implements Serializable {
      */
     public void reset() {
         bookings.set(0);
+    }
+
+    public static void endScan() {
+        if (firstScan) {
+            System.out.println("[RECOVERY] First scan complete. Backend resource should tidy up any orphaned transactions.");
+            firstScan = false;
+        }
     }
 }

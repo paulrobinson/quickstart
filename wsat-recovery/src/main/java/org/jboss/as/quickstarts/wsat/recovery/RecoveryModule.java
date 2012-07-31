@@ -31,7 +31,7 @@ public class RecoveryModule implements XTSATRecoveryModule
     }
 
     /**
-     * called during undeployment of an xts-demo web service to ensure the recovery module for
+     * called during undeployment of the web service to ensure the recovery module for
      * the demo is deinstalled once none of the services is active
      */
     public static void unregister()
@@ -71,7 +71,7 @@ public class RecoveryModule implements XTSATRecoveryModule
      * called during recovery processing to allow an application to identify a participant id
      * belonging to one of its participants and use the saved recovery state to recreate the
      * participant. n.b. this is only appropriate in case the participant was originally saved
-     * after being converted to a byte array using the PersistibleATParticipant interface.
+     * after being converted to a byte array using the PersistableATParticipant interface.
      *
      * @param id            the id used when the participant was created
      * @param recoveryState a byte array returned form the original participant via a call to
@@ -95,6 +95,6 @@ public class RecoveryModule implements XTSATRecoveryModule
      */
     public void endScan()
     {
-
+        MockRestaurantManager.endScan();
     }
 }
