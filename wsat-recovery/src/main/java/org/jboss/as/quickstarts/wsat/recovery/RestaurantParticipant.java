@@ -88,7 +88,7 @@ public class RestaurantParticipant implements Durable2PCParticipant, Serializabl
 
         if (System.getProperty("crash") != null)
         {
-           System.out.println("[SERVICE] About to crash service...");
+           System.out.println("[SERVICE] Inside commit, about to crash service...");
             Runtime.getRuntime().halt(0);
         }
         else
