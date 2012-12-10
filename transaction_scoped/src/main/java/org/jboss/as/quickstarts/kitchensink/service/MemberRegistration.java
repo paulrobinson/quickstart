@@ -16,53 +16,20 @@
  */
 package org.jboss.as.quickstarts.kitchensink.service;
 
-import java.lang.annotation.Annotation;
-import java.util.logging.Logger;
-
-import javax.enterprise.context.ContextNotActiveException;
-import javax.enterprise.event.Event;
-import javax.enterprise.inject.spi.BeanManager;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-
-import org.apache.deltaspike.jpa.api.transaction.TransactionScoped;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
 import org.jboss.as.quickstarts.kitchensink.model.Member;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
 
 @Transactional
 public class MemberRegistration {
 
-
-    @Inject
-    BeanManager beanManager;
-
-    @Inject
-    private Logger log;
-
     @Inject
     private EntityManager em;
 
-    @Inject
-    private Event<Member> memberEventSrc;
-
     @Transactional
     public void register(Member member) throws Exception {
-        if (isContextActive(TransactionScoped.class)) {
-            System.out.println("******************************* Active");
-        } else {
-            System.out.println("******************************* Not active");
-        }
-        log.info("Registering " + member.getName());
         em.persist(member);
-        memberEventSrc.fire(member);
-    }
-
-    boolean isContextActive(Class<? extends Annotation> scope) {
-        try {
-            beanManager.getContext(scope);
-        } catch (ContextNotActiveException e) {
-            return false;
-        }
-        return true;
     }
 }
