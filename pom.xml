@@ -143,6 +143,7 @@
                 <module>tasks-jsf</module>
                 <module>temperature-converter</module>
                 <module>tasks-rs</module>
+                <module>transaction_scoped</module>
                 <module>wicket-ear</module>
                 <module>wicket-war</module>
                 <module>xml-jaxp</module>
