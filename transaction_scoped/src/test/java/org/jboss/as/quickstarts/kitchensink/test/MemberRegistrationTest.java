@@ -54,7 +54,7 @@ public class MemberRegistrationTest {
                         Resources.class)
                 .addAsResource("META-INF/test-persistence.xml",
                         "META-INF/persistence.xml")
-                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+                .addAsWebInfResource("beans.xml")
                 .addAsLibraries(libs)
                 // Deploy our test datasource
                 .addAsWebInfResource("test-ds.xml");
@@ -63,17 +63,12 @@ public class MemberRegistrationTest {
     @Inject
     MemberRegistration memberRegistration;
 
-    @Inject
-    Logger log;
-
     @Test
     public void testRegister() throws Exception {
         Member newMember = new Member();
         newMember.setName("Jane Doe");
         memberRegistration.register(newMember);
         assertNotNull(newMember.getId());
-        log.info(newMember.getName() + " was persisted with id "
-                + newMember.getId());
     }
 
 }
