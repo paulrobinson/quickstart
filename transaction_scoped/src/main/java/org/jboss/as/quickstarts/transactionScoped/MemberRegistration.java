@@ -29,6 +29,7 @@ public class MemberRegistration {
 
     @Transactional
     public void register(Member member) throws Exception {
+        org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor l;
         em.persist(member);
     }
 }
